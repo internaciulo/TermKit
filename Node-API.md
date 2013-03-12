@@ -4,7 +4,7 @@
 
 * Make a .js file that exports a `main` function:
 
-```
+```javascript
 exports.main = function (tokens, pipes, exit, environment) {
 
   exit(true); // Success
@@ -45,7 +45,7 @@ When generating output, always write the MIME headers once at the beginning of t
 
 This is made easy with the built-in meta module. Here is e.g. `echo.js`:
 
-```
+```javascript
 var meta = require('shell/meta');
 
 exports.main = function (tokens, pipes, exit) {
@@ -71,7 +71,7 @@ exports.main = function (tokens, pipes, exit) {
 
 Meta.headers has a nice getter/setter API for manipulating MIME fields and their parameters:
 
-```
+```javascript
 // Single setters
 set(key, value)
 set(key, param, value)
@@ -98,7 +98,7 @@ get('key', 'parameter');
 
 To handle headers on dataIn, you can use the built-in `reader.js`. To use it, create a handler object with a begin, data and end method. The reader will invoke each method as needed.
 
-```
+```javascript
 var handler = { ... };
 
 // Attach reader to dataIn pipe.
@@ -119,7 +119,7 @@ The other mode is buffered I/O. In this case, all the data is buffered first, an
 
 The handler should follow the following template:
 
-```
+```javascript
 var handler = {
   
   /**
@@ -154,7 +154,7 @@ var handler = {
 
 If you wish to provide informational or interactive output, you must interface with viewIn / viewOut. To make this easier, you can use `view.js`.
 
-```
+```javascript
 var out = new view.bridge(pipes.viewOut);
 
 // Print hello world.
